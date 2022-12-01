@@ -45,7 +45,22 @@ def get_score_board() :
             print(f"{home_team['score']} - {away_team['score']}")
             print(f"{clock_match} - {period['current']}")
 
+    else:
+        print("No found results")    
 
-get_score_board()
+
+def regular_season() :
+    stats = all_links()["leagueTeamStatsLeaders"]
+    teams = get(BASE_URL + stats).json()["league"]["standard"]["regularSeason"]["teams"]
+
+    for team in teams :
+        name = team["name"]
+        nickname = team["nickname"]
+        rank = team["ppg"]["rank"]
+        average = team["ppg"]["rank"]   
+
+        print("-----------------------------------")    
+        print("name - nickname - rank - avg")
+        print(name, nickname, rank, average)
 
 
