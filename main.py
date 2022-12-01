@@ -19,9 +19,27 @@ def all_links() :
 
 
 def get_score_board() : 
+
     score_board_link = all_links()["currentScoreboard"]
-    data = get(BASE_URL + score_board_link)
+    data = None
+
+    try:
+        data = get(BASE_URL + score_board_link)
+    except TypeError as e :
+        print("Error requests")
 
 
+    if data.status_code == 200 :
+        
+        data = data.json()
+        
+        for game in data :
+            home_team = game["hTema"]
+            away_team = game["aTeam"]
+
+            print(home_team, away_team)
+
+
+get_score_board()
 
 
