@@ -1,12 +1,9 @@
 from requests import get
-from pprint import PrettyPrinter
 
 BASE_URL = "https://data.nba.net"
 ALL_OPTIONS_JSON = "/prod/v1/today.json"
 
 response = None
-printer = PrettyPrinter()
-
 
 def all_links() :
 
@@ -64,3 +61,26 @@ def regular_season() :
         print(name, nickname, rank, average)
 
 
+def main() :
+
+    print("**NBA INFO**")
+    
+    while True:
+
+        select_opt = input("Elige una opcion: 1-> Regular Season - 2-> Score Board 3-> Salir. : ")
+
+        if select_opt == "1" :
+            regular_season()
+            continue
+        
+        if select_opt == "2" :
+            get_score_board()
+            continue
+        
+        if select_opt == "3" :
+            print("Thansk, come back later :)")
+            break
+
+
+if __name__ == "__main__" :
+    main()
