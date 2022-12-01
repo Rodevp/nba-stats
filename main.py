@@ -34,10 +34,16 @@ def get_score_board() :
         data = data.json()
         
         for game in data :
+
             home_team = game["hTema"]
             away_team = game["aTeam"]
+            clock_match = game["clock"] 
+            period = game["period"]   
 
-            print(home_team, away_team)
+            print("----------------------------------------------")
+            print(f"{home_team['triCode']} vs {away_team['triCode']}")
+            print(f"{home_team['score']} - {away_team['score']}")
+            print(f"{clock_match} - {period['current']}")
 
 
 get_score_board()
